@@ -1,10 +1,10 @@
-const api = require('instagram-private-api');
+import {IgApiClient} from 'instagram-private-api';
 
 const IG_USERNAME = "user_name";
 const IG_PASSWORD = "password";
 
 async function getNonFollowers(userName, password) {
-    const ig = new api.IgApiClient();
+    const ig = new IgApiClient();
     ig.state.generateDevice(userName);
     const auth = await ig.account.login(userName, password);
     // followers
