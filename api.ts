@@ -19,6 +19,6 @@ export async function getNonFollowers(userName: string, password: string): Promi
     const following = followingResponse.users
         .map(u => ({userName: u.username, imageUrl: u.profile_pic_url}));
     // non followers
-    const nonFollowers = following.filter(f => followerUserNames.indexOf(f.userName) == -1);
+    const nonFollowers = following.filter(f => followerUserNames.indexOf(f.userName) === -1);
     return nonFollowers;
 }
