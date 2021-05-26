@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
     const nonFollowers = getNonFollowers(ENV.userName, ENV.password);
     nonFollowers.then(result => {
         result.forEach(unfollower => {
-            html.push("- " + unfollower.userName + "<br>");
+            html.push("- <input type='checkbox'/>" + unfollower.userName + "<br>");
         });
     }).finally(() => res.send(html.join("")));
 });
