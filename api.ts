@@ -11,8 +11,12 @@ export async function getNonFollowers(userName: string, password: string): Promi
     const auth = await ig.account.login(userName, password);
     // followers
     const followersFeed = ig.feed.accountFollowers(auth.pk);
-    const followersResponse = await followersFeed.request();
-    const followerUserNames = followersResponse.users.map(u => u.username);
+    const followers = await followersFeed.items();
+    do {
+        const nextPage = await followersFeed.items();
+        followers.push(...nextPage);
+    } while (followersFeed.isMoreAvailable());
+    const followerUserNames = followers.map(follower => follower.username);
     // following
     const followingFeed = ig.feed.accountFollowing(auth.pk);
     const followingResponse = await followingFeed.request();

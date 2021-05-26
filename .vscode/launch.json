@@ -7,6 +7,14 @@
       {
         "type": "node",
         "request": "launch",
+        "name": "Launch Api",
+        "program": "${workspaceFolder}/api.ts",
+        "preLaunchTask": "tsc: build - tsconfig.json",
+        "outFiles": ["${workspaceFolder}/build/**/*.js"]
+      },
+      {
+        "type": "node",
+        "request": "launch",
         "name": "Launch Program",
         "program": "${workspaceFolder}/app.ts",
         "preLaunchTask": "tsc: build - tsconfig.json",
